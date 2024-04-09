@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:moduleName="auth"
+    app:startDestination="@id/login_screen">
+
+    <fragment android:name="com.davega.auth.ui.login.LoginScreen"
+        android:id="@+id/login_screen">
+        <action
+            android:id="@+id/login_screen_to_main_screen_action"
+            app:destination="@id/products_graph"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/login_screen"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

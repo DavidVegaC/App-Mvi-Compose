@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/auth_graph">
+
+    <include-dynamic
+        android:id="@+id/auth_graph"
+        android:label="@string/title_auth"
+        app:graphPackage="com.davega.ibkapp.auth"
+        app:graphResName="auth_graph"
+        app:moduleName="auth" />
+
+    <include-dynamic
+        android:id="@+id/products_graph"
+        android:label="@string/title_products"
+        app:graphPackage="com.davega.ibkapp.products"
+        app:graphResName="products_graph"
+        app:moduleName="products" />
+
+
+</navigation>

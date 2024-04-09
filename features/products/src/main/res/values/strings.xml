@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="products">Productos</string>
+    <string name="operations">Operaciones</string>
+    <string name="detail">Consultas</string>
+    <string name="sol_money_symbol">S/</string>
+    <string name="dollar_money_symbol">$</string>
+    <string name="shared_text">Mi número de cuenta es: %s</string>
+    <string name="share">Compartir</string>
+    <string name="movements">Movimimentos</string>
+    <string name="loading_movements">Cargando movimimentos</string>
+    <string name="loading_products">Cargando productos</string>
+    <string name="number_account">Número de cuenta</string>
+    <string name="pronto">¡Muy pronto!</string>
+</resources>

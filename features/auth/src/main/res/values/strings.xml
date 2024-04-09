@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login">Iniciar sesión</string>
+    <string name="biometric_login_msg">Utiliza Biometría para iniciar sesión</string>
+    <string name="dni">DNI</string>
+    <string name="pin">PIN</string>
+    <string name="password">Contraseña</string>
+    <string name="dni_ej">ej. 85976532</string>
+    <string name="pin_ej">ej. 456789</string>
+    <string name="password_ej">ej. Test1</string>
+    <string name="login_error">Usuario y/o contraseña incorrectos</string>
+    <string name="cancel">CANCELAR</string>
+    <string name="remember">Recordar</string>
+    <string name="init_biometric_error">Hubo un error</string>
+    <string name="init_biometric_error_msg">No se pudo configurar biometria para inicio de sesión, intente mas tarde</string>
+    <string name="biometric_error_msg">No se pudo iniciar sesión con su huella. Puede reintentar o continuar con pin</string>
+    <string name="continue_pin">Continuar con pin</string>
+    <string name="str_retry">Reintentar</string>
+    <string name="str_ok">Entendido</string>
+</resources>

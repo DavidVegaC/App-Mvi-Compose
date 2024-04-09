@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Ibk App</string>
+    <string name="title_auth">Auth</string>
+    <string name="title_products">Products</string>
+    <string name="session_expired">Sesión expirada</string>
+    <string name="session_expired_msg">Su sesión dura dos minutos. Por favor vuelva a ingresar.</string>
+    <string name="str_ok">Entendido</string>
+</resources>

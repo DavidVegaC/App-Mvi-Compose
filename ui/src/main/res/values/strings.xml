@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="loading">Cargando</string>
+    <string name="str_retry">Reintentar</string>
+    <string name="error">Sucedió un error</string>
+</resources>
