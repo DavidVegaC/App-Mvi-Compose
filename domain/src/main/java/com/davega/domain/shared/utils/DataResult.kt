@@ -23,7 +23,7 @@ sealed class DataResult<out T> {
 sealed class DataError(
     code: Int? = null,
     message: String? = null,
-    cause: Throwable? = null
+    cause: Throwable? = null,
 ): DataResult.Error(code, message, cause) {
 
     class HttpError(

@@ -68,9 +68,6 @@ object LocalBiometricActions {
         if(BiometricManager.from(activity.applicationContext).canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG) != BiometricManager.BIOMETRIC_SUCCESS){
             return null
         }
-        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.M){
-            return null
-        }
         return remember {
             BiometricActionsImpl(
                 activity = activity

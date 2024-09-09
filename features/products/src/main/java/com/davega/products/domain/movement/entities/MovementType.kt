@@ -5,7 +5,7 @@ enum class MovementType {
     OUTPUT;
     companion object {
         fun find(name: String): MovementType {
-            return values().find { it.name.lowercase() == name } ?: INPUT
+            return entries.find { it.name.lowercase() == name } ?: INPUT
         }
     }
 }

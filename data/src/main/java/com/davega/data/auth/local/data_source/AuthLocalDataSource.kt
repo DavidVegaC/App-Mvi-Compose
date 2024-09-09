@@ -11,23 +11,22 @@ class AuthLocalDataSource(
 
     suspend fun saveAuth(dni: String?, auth: Auth){
         localStorage.setString(
-            key = authKey,
-            value = JSON.stringify(auth)
+            key = AUTH_KEY,
+            value = JSON.stringify(auth),
         )
-        dni?.let {
-            localStorage.setString(
-                key = dniKey,
-                value = it
-            )
-        } ?: localStorage.removeString(key = dniKey)
+
+        if (dni == null) {
+            localStorage.removeString(key = DNI_KEY)
+            return
+        }
+        localStorage.setString(key = DNI_KEY, value = dni)
     }
 
-    suspend fun getDni(): String? = localStorage.getString(dniKey)
+    suspend fun getDni(): String? = localStorage.getString(DNI_KEY)
 
     suspend fun getAuth(): Auth? {
-        return localStorage.getString(key = authKey)?.let {
-            JSON.parse(it)
-        }
+        val authString: String = localStorage.getString(key = AUTH_KEY) ?: return null
+        return JSON.parse(authString)
     }
 
     suspend fun saveCipherValue(dni: String, value: CiphertextWrapper){
@@ -35,18 +34,16 @@ class AuthLocalDataSource(
     }
 
     suspend fun getCipherValue(dni: String): CiphertextWrapper? {
-        return localStorage.getString(dni)?.let {
-            JSON.parse(it)
-        }
+        val dniString: String = localStorage.getString(dni) ?: return null
+        return JSON.parse(dniString)
     }
 
     suspend fun removeAuth() {
-        localStorage.removeString(key = authKey)
+        localStorage.removeString(key = AUTH_KEY)
     }
 
     companion object {
-        private const val authKey = "auth_key"
-        private const val dniKey = "dni_key"
+        private const val AUTH_KEY = "auth_key"
+        private const val DNI_KEY = "dni_key"
     }
-
 }

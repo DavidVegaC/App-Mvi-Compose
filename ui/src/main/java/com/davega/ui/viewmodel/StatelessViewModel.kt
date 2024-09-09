@@ -1,4 +1,4 @@
-package com.davega.ui.lifecycle
+package com.davega.ui.viewmodel
 
 import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel

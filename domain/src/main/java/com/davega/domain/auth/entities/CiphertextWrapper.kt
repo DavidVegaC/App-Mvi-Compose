@@ -2,7 +2,7 @@ package com.davega.domain.auth.entities
 
 data class CiphertextWrapper(
     val ciphertext: ByteArray,
-    val initializationVector: ByteArray
+    val initializationVector: ByteArray,
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -10,8 +10,8 @@ data class CiphertextWrapper(
 
         other as CiphertextWrapper
 
-        if (!ciphertext.contentEquals(other.ciphertext)) return false
-        if (!initializationVector.contentEquals(other.initializationVector)) return false
+        if (ciphertext.contentEquals(other.ciphertext).not()) return false
+        if (initializationVector.contentEquals(other.initializationVector).not()) return false
 
         return true
     }

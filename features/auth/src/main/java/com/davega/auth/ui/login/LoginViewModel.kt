@@ -8,7 +8,7 @@ import com.davega.domain.auth.entities.CiphertextWrapper
 import com.davega.auth.domain.auth.use_cases.get_cipher.GetCipherUseCase
 import com.davega.auth.domain.auth.use_cases.save_cipher.SaveCipherParameters
 import com.davega.auth.domain.auth.use_cases.save_cipher.SaveCipherUseCase
-import com.davega.ui.lifecycle.StatefulViewModel
+import com.davega.ui.viewmodel.StatefulViewModel
 import com.davega.ui.utils.containsEmoji
 import com.davega.ui.utils.isNumber
 import com.davega.ui.utils.launch
@@ -51,7 +51,7 @@ class LoginViewModel(
     }
 
     fun setPassword(value: String){
-        if(!value.containsEmoji()){
+        if(value.containsEmoji().not()){
             setUiState {
                 copy(
                     password = value,

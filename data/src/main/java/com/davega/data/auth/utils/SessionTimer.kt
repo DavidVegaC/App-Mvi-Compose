@@ -15,7 +15,7 @@ class SessionTimer(
 
     private val minutes = 2L
 
-    private val eventChannel = Channel<Session>(Channel.BUFFERED)
+    private val eventChannel = Channel<Session>(capacity = Channel.BUFFERED)
 
     operator fun invoke(): Flow<Session> {
         return eventChannel.receiveAsFlow()

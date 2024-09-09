@@ -58,7 +58,6 @@ dependencies {
     addRetrofitDependencies()
     addTimberDependencies()
     addDataStorageDependencies()
-    addRoomDependencies()
     addSecurity()
 
     implementation(libs.androidx.core.ktx)

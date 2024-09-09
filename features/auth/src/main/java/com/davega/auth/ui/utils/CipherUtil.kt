@@ -15,7 +15,6 @@ import javax.crypto.spec.GCMParameterSpec
 private const val KEY_SIZE = 256
 private const val ANDROID_KEY_STORE = "AndroidKeyStore"
 
-@RequiresApi(Build.VERSION_CODES.M)
 private fun createCipher(): Cipher {
     val cipherInfo = listOf(
         KeyProperties.KEY_ALGORITHM_AES,
@@ -25,7 +24,6 @@ private fun createCipher(): Cipher {
     return Cipher.getInstance(cipherInfo.joinToString("/"))
 }
 
-@RequiresApi(Build.VERSION_CODES.M)
 private fun createSecretKey(keyName: String): SecretKey {
     KeyStore.getInstance(ANDROID_KEY_STORE).apply {
         load(null)
@@ -49,7 +47,6 @@ private fun createSecretKey(keyName: String): SecretKey {
     return keyGenerator.generateKey()
 }
 
-@RequiresApi(Build.VERSION_CODES.M)
 object CipherEncryption {
     operator fun invoke(keyName: String): Cipher {
         return createCipher().apply {
@@ -61,7 +58,6 @@ object CipherEncryption {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.M)
 object CipherDecryption {
     operator fun invoke(keyName: String, initializationVector: ByteArray): Cipher {
         return createCipher().apply {

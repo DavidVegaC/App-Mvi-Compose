@@ -10,17 +10,26 @@ class AuthInterceptor(
     private val local: AuthLocalDataSource
 ): Interceptor {
 
+    private val emptyAuth: Auth by lazy {
+        Auth(EMPTY_STRING, EMPTY_STRING)
+    }
+
     override fun intercept(chain: Interceptor.Chain): Response {
         val auth = runBlocking {
-            local.getAuth() ?: Auth("", "")
+            local.getAuth() ?: emptyAuth
         }
         val request = chain.request().newBuilder()
             .addHeader(
-                "Authorization",
+                AUTHORIZATION,
                 "${auth.type} ${auth.token}"
             )
             .build()
         return chain.proceed(request)
     }
 
+    companion object {
+
+        private const val AUTHORIZATION: String = "Authorization"
+        private const val EMPTY_STRING: String = ""
+    }
 }

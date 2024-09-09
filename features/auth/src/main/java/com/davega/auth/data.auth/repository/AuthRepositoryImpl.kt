@@ -23,7 +23,7 @@ class AuthRepositoryImpl(
         ).map {
             it.toAuth()
         }
-        if(result is DataResult.Success){
+        if(result is DataResult.Success) {
             local.saveAuth(
                 dni = if(remember) dni else null,
                 auth = result.data

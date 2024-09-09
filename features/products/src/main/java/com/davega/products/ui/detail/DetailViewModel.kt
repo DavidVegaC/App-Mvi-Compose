@@ -3,7 +3,7 @@ package com.davega.products.ui.detail
 import com.davega.products.domain.movement.use_cases.get_movements.GetMovementsResult
 import com.davega.products.domain.movement.use_cases.get_movements.GetMovementsUseCase
 import com.davega.products.domain.product.entities.Product
-import com.davega.ui.lifecycle.StatefulViewModel
+import com.davega.ui.viewmodel.StatefulViewModel
 import com.davega.ui.utils.launch
 
 class DetailViewModel(

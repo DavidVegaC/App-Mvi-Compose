@@ -4,7 +4,7 @@ import com.davega.products.domain.product.use_cases.get_products.GetProductsResu
 import com.davega.products.domain.product.use_cases.get_products.GetProductsUseCase
 import com.davega.products.domain.product.use_cases.update_products.UpdateProductsResult
 import com.davega.products.domain.product.use_cases.update_products.UpdateProductsUseCase
-import com.davega.ui.lifecycle.StatefulViewModel
+import com.davega.ui.viewmodel.StatefulViewModel
 import com.davega.ui.utils.launch
 
 class ProductsViewModel(

@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
-import com.davega.ui.lifecycle.LoadingEvent
+import com.davega.ui.viewmodel.LoadingEvent
 import com.davega.ui.theme.ArchitectureAndroidTheme
 import com.davega.ui.utils.hideLoading
 import com.davega.ui.utils.showLoading
