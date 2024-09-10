@@ -4,7 +4,7 @@
     app:moduleName="auth"
     app:startDestination="@id/login_screen">
 
-    <fragment android:name="com.davega.auth.ui.login.LoginScreen"
+    <fragment android:name="com.davega.auth.ui.login.LoginScreenFragment"
         android:id="@+id/login_screen">
         <action
             android:id="@+id/login_screen_to_main_screen_action"

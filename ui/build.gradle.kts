@@ -51,6 +51,7 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.runtime.livedata)
     addKotlinCoroutinesDependencies()
     addKoinDependencies()
     addTimberDependencies()

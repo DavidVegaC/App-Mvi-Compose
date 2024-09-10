@@ -8,7 +8,7 @@ import com.davega.auth.domain.auth.use_cases.get_cipher.GetCipherUseCase
 import com.davega.auth.domain.auth.use_cases.get_dni.GetDniUseCase
 import com.davega.auth.domain.auth.use_cases.login.LoginUseCase
 import com.davega.auth.domain.auth.use_cases.save_cipher.SaveCipherUseCase
-import com.davega.auth.ui.login.LoginViewModel
+import com.davega.auth.ui.login.LoginBaseViewModel
 import com.davega.data.BuildConfig
 import com.davega.data.shared.interceptors.PostmanInterceptor
 import com.davega.data.shared.utils.ApiBuilder
@@ -18,7 +18,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 internal val moduleLoader by createModuleLoader(
     uiModule = {
         viewModel {
-            LoginViewModel(
+            LoginBaseViewModel(
                 loginUseCase = get(),
                 getDniUseCase = get(),
                 saveCipherUseCase = get(),

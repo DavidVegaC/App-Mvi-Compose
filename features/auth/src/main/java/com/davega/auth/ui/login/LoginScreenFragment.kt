@@ -3,12 +3,25 @@ package com.davega.auth.ui.login
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
@@ -31,85 +44,66 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.davega.auth.R
 import com.davega.auth.di.loadModules
-import com.davega.auth.ui.login.dialogs.BiometricError
 import com.davega.auth.ui.login.dialogs.ConfigBiometricError
-import com.davega.auth.ui.utils.BiometricResult
+import com.davega.auth.ui.login.interactors.LoginUiEvent
+import com.davega.auth.ui.login.interactors.LoginUiIntent
+import com.davega.auth.ui.login.interactors.LoginUiState
 import com.davega.auth.ui.utils.LocalBiometricActions
-import com.davega.ui.base.ScreenFragment
 import com.davega.ui.components.AppAnimation
 import com.davega.ui.components.AppButton
 import com.davega.ui.components.AppTextField
+import com.davega.ui.compose.fragment.AppComposeFragment
+import com.davega.ui.compose.stateful.OnUiEvent
+import com.davega.ui.compose.stateful.Stateful
+import com.davega.ui.compose.stateful.execUiIntent
+import com.davega.ui.compose.stateful.uiState
+import com.davega.ui.compose.util.ScreenPreview
 import com.davega.ui.utils.navigate
 
-class LoginScreen: ScreenFragment<LoginViewModel>(
-    clazz = LoginViewModel::class
-) {
+class LoginScreenFragment : AppComposeFragment() {
 
     override fun onInit() {
         loadModules()
     }
 
     @Composable
-    override fun Screen() = with(viewModel) {
+    override fun Screen() = Stateful<LoginBaseViewModel> {
+        val uiState by uiState()
         val biometricActions = LocalBiometricActions.current
-        OnEvent {
-            when(it){
+        OnUiEvent {
+            when(it) {
                 is LoginUiEvent.GoToMain -> {
-                    navigate(LoginScreenDirections.loginScreenToMainScreenAction())
+                    navigate(LoginScreenFragmentDirections.loginScreenToMainScreenAction())
+                }
+
+                is LoginUiEvent.ShowConfigBiometricError -> {
+                    ConfigBiometricError(
+                        onAction = {
+                            navigate(LoginScreenFragmentDirections.loginScreenToMainScreenAction())
+                        }
+                    ).show()
+                }
+                is LoginUiEvent.ShowBiometricError -> {
+                    ConfigBiometricError(
+                        onAction = {
+                            navigate(LoginScreenFragmentDirections.loginScreenToMainScreenAction())
+                        }
+                    ).show()
                 }
                 is LoginUiEvent.EncryptPin -> {
-                    biometricActions?.let { biometricActions ->
-                        val result = biometricActions.encryption(
-                            key = it.key,
-                            value = it.value
-                        )
-                        when(result){
-                            is BiometricResult.SuccessEncryption -> {
-                                saveCipherValue(
-                                    dni = it.key,
-                                    cipherValue = result.cipherValue
-                                )
-                            }
-                            is BiometricResult.Error -> {
-                                ConfigBiometricError(
-                                    onAction = {
-                                        navigate(LoginScreenDirections.loginScreenToMainScreenAction())
-                                    }
-                                ).show()
-                            }
-                            is BiometricResult.Cancel -> {
-                                navigate(LoginScreenDirections.loginScreenToMainScreenAction())
-                            }
-                            else -> {}
-                        }
-                    } ?: navigate(LoginScreenDirections.loginScreenToMainScreenAction())
+                    execUiIntent(LoginUiIntent.EncryptPin(
+                        biometricActions = biometricActions,
+                        key = it.key,
+                        value = it.value,
+                    ))
                 }
                 is LoginUiEvent.DecryptPin -> {
                     biometricActions?.let { biometricActions ->
-                        val result = biometricActions.decryption(
+                        execUiIntent(LoginUiIntent.Decryption(
+                            biometricActions = biometricActions,
                             key = it.key,
-                            value = it.value
-                        )
-                        when(result){
-                            is BiometricResult.SuccessDecryption -> {
-                                login(
-                                    dni = it.key,
-                                    password = result.value,
-                                    remember = uiState.remember
-                                )
-                            }
-                            is BiometricResult.Error -> {
-                                BiometricError(
-                                    retry = {
-                                        decryptionInfo(
-                                            dni = it.key,
-                                            cipherValue = it.value
-                                        )
-                                    }
-                                ).show()
-                            }
-                            else -> {}
-                        }
+                            value = it.value,
+                        ))
                     }
                 }
             }
@@ -191,7 +185,7 @@ class LoginScreen: ScreenFragment<LoginViewModel>(
                         label = stringResource(id = R.string.dni),
                         placeholder = stringResource(id = R.string.dni_ej),
                         onChange = {
-                            setDni(it)
+                            execUiIntent(LoginUiIntent.SetDni(it))
                         },
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Number,
@@ -219,7 +213,7 @@ class LoginScreen: ScreenFragment<LoginViewModel>(
                             label = stringResource(id = R.string.password),
                             placeholder = stringResource(id = R.string.password_ej),
                             onChange = {
-                                setPassword(it)
+                                execUiIntent(LoginUiIntent.SetPassword(it))
                             },
                             keyboardOptions = KeyboardOptions(
                                 keyboardType = KeyboardType.Password,
@@ -240,7 +234,7 @@ class LoginScreen: ScreenFragment<LoginViewModel>(
                             trailingIcon = {
                                 IconButton(
                                     onClick = {
-                                        toggleVisibility()
+                                        execUiIntent(LoginUiIntent.HandlerToggleVisibility)
                                     }
                                 ) {
                                     Icon(
@@ -271,10 +265,10 @@ class LoginScreen: ScreenFragment<LoginViewModel>(
                                     .clickable(
                                         onClick = {
                                             uiState.cipherValue?.let {
-                                                decryptionInfo(
-                                                    dni = uiState.dni,
-                                                    cipherValue = it
-                                                )
+                                                execUiIntent(LoginUiIntent.DecryptPin(
+                                                    key = uiState.dni,
+                                                    value = it
+                                                ))
                                             }
                                         },
                                         enabled = uiState.cipherValue != null
@@ -296,7 +290,7 @@ class LoginScreen: ScreenFragment<LoginViewModel>(
                         Checkbox(
                             checked = uiState.remember,
                             onCheckedChange = {
-                                toggleRemember()
+                                execUiIntent(LoginUiIntent.HandleRemember)
                             }
                         )
                         Text(
@@ -327,16 +321,24 @@ class LoginScreen: ScreenFragment<LoginViewModel>(
                             end.linkTo(parent.end)
                         },
                     text = stringResource(id = R.string.login),
-                    enabled = uiState.isValid
+                    enabled = uiState.isValid,
                 ) {
-                    login(
+                    execUiIntent(LoginUiIntent.Login(
                         dni = uiState.dni,
                         password = uiState.password,
                         remember = uiState.remember
-                    )
+                    ))
                 }
             }
         }
     }
 
+    @Composable
+    override fun DefaultPreview() {
+        ScreenPreview(
+            uiState = LoginUiState(),
+        ) {
+            Screen()
+        }
+    }
 }

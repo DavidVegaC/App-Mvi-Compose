@@ -20,6 +20,7 @@ constraint-layout = "1.0.1"
 swiperefresh = "0.24.5-alpha"
 koin = "3.1.2"
 navigation = "2.7.7"
+runtimeLivedata = "1.7.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,6 +48,7 @@ androidx-navigation-dynamic-features = { group = "androidx.navigation", name = "
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 google-swiperefresh = { group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref = "swiperefresh" }
 koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
+androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
