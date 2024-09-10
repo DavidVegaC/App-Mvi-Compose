@@ -8,7 +8,7 @@ El objetivo del proyecto es crear una aplicación modularizada utilizando Jetpac
 
 ### Screenshots
 
-![screenshot.png](screenshot.png)
+![screenshot.png](ibk_screenshot.png)
 
 ## Arquitectura y Patrones de Diseño
 
