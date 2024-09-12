@@ -5,8 +5,9 @@ import com.davega.products.data.movements.remote.data_source.MovementRemoteDataS
 import com.davega.products.data.movements.repository.mappers.toMovement
 import com.davega.products.domain.movement.entities.Movement
 import com.davega.products.domain.movement.repository.MovementRepository
+import javax.inject.Inject
 
-class MovementRepositoryImpl(
+class MovementRepositoryImpl @Inject constructor(
     private val remote: MovementRemoteDataSource
 ): MovementRepository {
 

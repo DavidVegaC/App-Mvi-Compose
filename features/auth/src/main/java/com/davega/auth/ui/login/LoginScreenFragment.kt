@@ -43,7 +43,6 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.davega.auth.R
-import com.davega.auth.di.loadModules
 import com.davega.auth.ui.login.dialogs.ConfigBiometricError
 import com.davega.auth.ui.login.interactors.LoginUiEvent
 import com.davega.auth.ui.login.interactors.LoginUiIntent
@@ -61,10 +60,6 @@ import com.davega.ui.compose.util.ScreenPreview
 import com.davega.ui.utils.navigate
 
 class LoginScreenFragment : AppComposeFragment() {
-
-    override fun onInit() {
-        loadModules()
-    }
 
     @Composable
     override fun Screen() = Stateful<LoginBaseViewModel> {

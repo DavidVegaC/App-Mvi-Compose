@@ -17,6 +17,7 @@ import com.davega.ui.core.viewmodel.handler.uiEffectHandler
 import com.davega.ui.core.viewmodel.handler.uiEventHandler
 import com.davega.ui.core.viewmodel.handler.uiIntentHandler
 import com.davega.ui.core.viewmodel.handler.uiStateHandler
+import com.davega.ui.utils.launch
 
 abstract class BaseViewModel<S : UiState, I : UiIntent, E : UiEvent>(
     savedStateHandle: SavedStateHandle,
@@ -29,9 +30,15 @@ abstract class BaseViewModel<S : UiState, I : UiIntent, E : UiEvent>(
     UiEffectHandler by uiEffectHandler()
 {
 
+
+    open suspend fun onInit() {}
+
     init {
         // Inicializa el ViewModel con el scope del ViewModel y la función handleIntent
         this.initialize(viewModelScope, ::handleIntent)
+        launch {
+            onInit()
+        }
     }
 
     protected abstract suspend fun handleIntent(intent: I)

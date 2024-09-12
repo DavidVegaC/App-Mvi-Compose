@@ -11,10 +11,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
-import com.davega.auth.data.cipher.CipherDecryption
-import com.davega.auth.data.cipher.CipherEncryption
-import com.davega.auth.data.cipher.decryptData
-import com.davega.auth.data.cipher.encryptData
 import com.davega.domain.auth.entities.CiphertextWrapper
 import com.davega.auth.R
 import javax.crypto.Cipher

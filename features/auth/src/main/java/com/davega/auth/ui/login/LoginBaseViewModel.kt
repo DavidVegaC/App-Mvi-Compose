@@ -1,14 +1,14 @@
 package com.davega.auth.ui.login
 
 import androidx.lifecycle.SavedStateHandle
-import com.davega.auth.domain.auth.use_cases.get_dni.GetDniUseCase
-import com.davega.auth.domain.auth.use_cases.login.LoginParameters
-import com.davega.auth.domain.auth.use_cases.login.LoginResult
-import com.davega.auth.domain.auth.use_cases.login.LoginUseCase
+import com.davega.auth.domain.use_cases.get_dni.GetDniUseCase
+import com.davega.auth.domain.use_cases.login.LoginParameters
+import com.davega.auth.domain.use_cases.login.LoginResult
+import com.davega.auth.domain.use_cases.login.LoginUseCase
 import com.davega.domain.auth.entities.CiphertextWrapper
-import com.davega.auth.domain.auth.use_cases.get_cipher.GetCipherUseCase
-import com.davega.auth.domain.auth.use_cases.save_cipher.SaveCipherParameters
-import com.davega.auth.domain.auth.use_cases.save_cipher.SaveCipherUseCase
+import com.davega.auth.domain.use_cases.get_cipher.GetCipherUseCase
+import com.davega.auth.domain.use_cases.save_cipher.SaveCipherParameters
+import com.davega.auth.domain.use_cases.save_cipher.SaveCipherUseCase
 import com.davega.auth.ui.login.dialogs.ConfigBiometricError
 import com.davega.auth.ui.login.interactors.LoginUiEvent
 import com.davega.auth.ui.login.interactors.LoginUiIntent
@@ -22,9 +22,12 @@ import com.davega.ui.utils.launch
 import com.davega.ui.core.viewmodel.BaseViewModel
 import com.davega.ui.core.viewmodel.handler.setUiState
 import com.davega.ui.utils.navigate
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
+import javax.inject.Inject
 
-class LoginBaseViewModel(
+@HiltViewModel
+class LoginBaseViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
     private val getDniUseCase: GetDniUseCase,
     private val saveCipherUseCase: SaveCipherUseCase,
@@ -34,7 +37,7 @@ class LoginBaseViewModel(
     defaultUiState = { LoginUiState() }
 ) {
 
-    init {
+    override suspend fun onInit() {
         LoginUiIntent.GetDni.exec()
     }
 

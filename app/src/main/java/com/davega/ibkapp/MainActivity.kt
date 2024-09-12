@@ -10,11 +10,12 @@ import com.davega.ibkapp.ui.session_expired.SessionExpiredDialog
 import com.davega.ui.base.BaseActivity
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import org.koin.android.ext.android.inject
+import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
 
-    private val sessionTimer: SessionTimer by inject()
+    @Inject
+    lateinit var sessionTimer: SessionTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

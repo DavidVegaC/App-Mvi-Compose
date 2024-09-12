@@ -5,8 +5,11 @@ import com.davega.products.domain.movement.use_cases.get_movements.GetMovementsU
 import com.davega.products.domain.product.entities.Product
 import com.davega.ui.viewmodel.StatefulViewModel
 import com.davega.ui.utils.launch
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class DetailViewModel(
+@HiltViewModel
+class DetailViewModel @Inject constructor(
     product: Product,
     private val getMovementsUseCase: GetMovementsUseCase
 ): StatefulViewModel<DetailUiState, DetailUiEvent>(

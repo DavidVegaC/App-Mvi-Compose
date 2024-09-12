@@ -8,14 +8,16 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SessionTimer(
+
+class SessionTimer @Inject constructor(
     private val local: AuthLocalDataSource
 ) {
 
     private val minutes = 2L
 
-    private val eventChannel = Channel<Session>(capacity = Channel.BUFFERED)
+    private val eventChannel = Channel<Session>(Channel.BUFFERED)
 
     operator fun invoke(): Flow<Session> {
         return eventChannel.receiveAsFlow()

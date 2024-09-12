@@ -1,9 +1,7 @@
-package com.davega.auth.data.cipher
+package com.davega.auth.ui.utils
 
-import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
-import androidx.annotation.RequiresApi
 import com.davega.domain.auth.entities.CiphertextWrapper
 import java.nio.charset.Charset
 import java.security.KeyStore
