@@ -6,8 +6,11 @@ import com.davega.products.domain.product.use_cases.update_products.UpdateProduc
 import com.davega.products.domain.product.use_cases.update_products.UpdateProductsUseCase
 import com.davega.ui.lifecycle.StatefulViewModel
 import com.davega.ui.utils.launch
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ProductsViewModel(
+@HiltViewModel
+class ProductsViewModel @Inject constructor(
     private val getProductsUseCase: GetProductsUseCase,
     private val updateProductsUseCase: UpdateProductsUseCase
 ): StatefulViewModel<ProductsUiState, ProductsUiEvent>(

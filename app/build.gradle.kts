@@ -1,9 +1,9 @@
-import utils.addKoinDependencies
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.navigationSafeargsKotlin)
+    alias(libs.plugins.comGoogleDevtoolsKsp)
+    alias(libs.plugins.comGoogleDaggerHiltAndroid)
 }
 
 android {
@@ -46,7 +46,10 @@ android {
 }
 
 dependencies {
-    addKoinDependencies()
+    // hilt
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

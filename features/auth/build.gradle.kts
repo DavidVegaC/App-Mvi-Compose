@@ -1,12 +1,14 @@
 import utils.addBiometric
-import utils.addKoinDependencies
 import utils.addRetrofitDependencies
 
 plugins {
     alias(libs.plugins.androidDynamicFeature)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.navigationSafeargsKotlin)
+    alias(libs.plugins.comGoogleDevtoolsKsp)
+    alias(libs.plugins.comGoogleDaggerHiltAndroid)
 }
+
 android {
     namespace = "com.davega.auth"
     compileSdk = 34
@@ -46,7 +48,11 @@ dependencies {
     implementation(project(":data"))
     implementation(project(":ui"))
 
-    addKoinDependencies()
+    // hilt
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
+
     addRetrofitDependencies()
     addBiometric()
 

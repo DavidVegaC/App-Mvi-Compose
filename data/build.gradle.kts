@@ -1,5 +1,4 @@
 import utils.addDataStorageDependencies
-import utils.addKoinDependencies
 import utils.addKotlinCoroutinesDependencies
 import utils.addRetrofitDependencies
 import utils.addRoomDependencies
@@ -10,6 +9,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.comGoogleDevtoolsKsp)
+    alias(libs.plugins.comGoogleDaggerHiltAndroid)
 }
 
 android {
@@ -53,8 +53,13 @@ android {
 
 dependencies {
 
+    // hilt
+    implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
+
     addKotlinCoroutinesDependencies()
-    addKoinDependencies()
+
     addRetrofitDependencies()
     addTimberDependencies()
     addDataStorageDependencies()

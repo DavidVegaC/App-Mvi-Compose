@@ -17,9 +17,6 @@ import com.davega.ui.lifecycle.LoadingEvent
 import com.davega.ui.theme.ArchitectureAndroidTheme
 import com.davega.ui.utils.hideLoading
 import com.davega.ui.utils.showLoading
-import org.koin.androidx.viewmodel.ext.android.getViewModel
-import org.koin.core.parameter.ParametersHolder
-import org.koin.core.parameter.parametersOf
 import kotlin.reflect.KClass
 
 abstract class ScreenFragment<V : ViewModel>(
@@ -34,7 +31,9 @@ abstract class ScreenFragment<V : ViewModel>(
     isCancelable = isCancelable
 ) {
 
-    protected val viewModel: V by lazy {
+    lateinit var viewModel: V
+
+    /*protected val viewModel: V by lazy {
         if (navGraphId != null) {
             findNavController().getViewModelStoreOwner(navGraphId)
                 .getViewModel(clazz = clazz, parameters = ::getParameters)
@@ -45,7 +44,7 @@ abstract class ScreenFragment<V : ViewModel>(
 
     open fun getParameters(): ParametersHolder {
         return parametersOf()
-    }
+    }*/
 
     override fun onCreateView(
         inflater: LayoutInflater,

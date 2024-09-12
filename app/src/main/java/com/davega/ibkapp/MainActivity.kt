@@ -6,12 +6,15 @@ import androidx.navigation.fragment.NavHostFragment
 import com.davega.data.auth.utils.SessionTimer
 import com.davega.ibkapp.ui.session_expired.SessionExpiredDialog
 import com.davega.ui.base.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
-import org.koin.android.ext.android.inject
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
-    private val sessionTimer: SessionTimer by inject()
+    @Inject
+    lateinit var sessionTimer: SessionTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -5,4 +5,6 @@ plugins {
     alias(libs.plugins.androidLibrary) apply false
     alias(libs.plugins.jetbrainsKotlinJvm) apply false
     alias(libs.plugins.androidDynamicFeature) apply false
+    alias(libs.plugins.comGoogleDevtoolsKsp) apply false
+    alias(libs.plugins.comGoogleDaggerHiltAndroid) apply false
 }

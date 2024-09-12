@@ -12,8 +12,11 @@ import com.davega.ui.lifecycle.StatefulViewModel
 import com.davega.ui.utils.containsEmoji
 import com.davega.ui.utils.isNumber
 import com.davega.ui.utils.launch
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class LoginViewModel(
+@HiltViewModel
+class LoginViewModel @Inject constructor(
     private val loginUseCase: LoginUseCase,
     private val getDniUseCase: GetDniUseCase,
     private val saveCipherUseCase: SaveCipherUseCase,

@@ -1,4 +1,3 @@
-import utils.addKoinDependencies
 import utils.addKotlinCoroutinesDependencies
 import utils.addRetrofitDependencies
 import utils.addTimberDependencies
@@ -40,7 +39,6 @@ android {
 dependencies {
 
     addKotlinCoroutinesDependencies()
-    addKoinDependencies()
     addTimberDependencies()
     addRetrofitDependencies()
     implementation(libs.androidx.core.ktx)
