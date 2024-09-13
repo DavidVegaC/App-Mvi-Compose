@@ -13,7 +13,7 @@ import androidx.navigation.NavController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.davega.products.R
-import com.davega.products.ui.navigation.main.MainRoutes
+import com.davega.products.ui.navigation.main.Screen
 import com.davega.products.ui.products.mappers.UiMapper
 import com.davega.ui.components.AppLoading
 import com.davega.ui.components.AppRetry
@@ -64,10 +64,8 @@ fun ProductsScreen(
                         top = 32.dp
                     )
                 ) {
-                    val route = MainRoutes.Detail.createRoute(
-                        product = product
-                    )
-                    navController.navigate(route)
+                    val action: String = Screen.ProductDetail.route.plus("/${product.toString()}")
+                    navController.navigate(action)
                 }
             }
         }
