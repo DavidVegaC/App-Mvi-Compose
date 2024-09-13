@@ -14,23 +14,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.davega.products.R
 import com.davega.products.domain.product.entities.Product
 import com.davega.products.ui.detail.mapper.UiMapper
 import com.davega.products.ui.detail.mapper.UiMapperDetail
 import com.davega.ui.components.AppLoading
 import com.davega.ui.components.AppRetry
-import org.koin.androidx.compose.getViewModel
-import org.koin.core.parameter.parametersOf
 
 @Composable
 fun DetailScreen(
-    product: Product,
-    viewModel: DetailViewModel = getViewModel(
-        parameters = {
-            parametersOf(product)
-        }
-    )
+    viewModel: DetailViewModel = hiltViewModel(),
 ) = with(viewModel){
     LazyColumn(
         modifier = Modifier.fillMaxSize(),

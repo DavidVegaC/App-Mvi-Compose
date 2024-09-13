@@ -4,8 +4,9 @@ import com.davega.data.shared.utils.safeApiCall
 import com.davega.domain.shared.utils.DataResult
 import com.davega.products.data.product.remote.api.ProductApi
 import com.davega.products.data.product.remote.dto.ProductResponse
+import javax.inject.Inject
 
-class ProductRemoteDataSource(
+class ProductRemoteDataSource @Inject constructor(
     private val api: ProductApi
 ) {
 

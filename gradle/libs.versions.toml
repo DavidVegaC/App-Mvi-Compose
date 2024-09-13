@@ -10,6 +10,7 @@ activityCompose = "1.8.2"
 composeBom = "2023.10.00"
 appcompat = "1.6.1"
 material = "1.10.0"
+compose-material = "1.7.1"
 com-google-devtools-ksp = "1.9.10-1.0.13"
 compose-navigation = "2.7.4"
 navigationFragmentKtx = "2.7.7"
@@ -18,7 +19,6 @@ jetbrainsKotlinJvm = "1.9.0"
 annotation = "1.7.1"
 constraint-layout = "1.0.1"
 swiperefresh = "0.24.5-alpha"
-koin = "3.1.2"
 navigation = "2.7.7"
 hilt-android = "2.48.1"
 hilt-navigation-compose = "1.0.0"
@@ -40,7 +40,7 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose-navigation" }
-androidx-icons = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-icons = { group = "androidx.compose.material", name = "material"}
 androidx-constraint = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version.ref = "constraint-layout" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
@@ -48,7 +48,6 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 androidx-navigation-dynamic-features = { group = "androidx.navigation", name = "navigation-dynamic-features-fragment", version.ref = "navigationUiKtx" }
 androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
 google-swiperefresh = { group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref = "swiperefresh" }
-koin-compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt-android" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt-android" }
 hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-navigation-compose" }

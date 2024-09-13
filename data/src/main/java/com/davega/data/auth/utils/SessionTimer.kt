@@ -1,6 +1,7 @@
 package com.davega.data.auth.utils
 
 import com.davega.data.auth.local.data_source.AuthLocalDataSource
+import dagger.hilt.android.scopes.ActivityScoped
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.channels.Channel
@@ -8,8 +9,9 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SessionTimer(
+class SessionTimer @Inject constructor(
     private val local: AuthLocalDataSource
 ) {
 

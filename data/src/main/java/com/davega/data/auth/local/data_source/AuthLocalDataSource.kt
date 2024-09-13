@@ -4,8 +4,9 @@ import com.davega.data.shared.persistence.data_storage.DataStorage
 import com.davega.data.shared.utils.JSON
 import com.davega.domain.auth.entities.Auth
 import com.davega.domain.auth.entities.CiphertextWrapper
+import javax.inject.Inject
 
-class AuthLocalDataSource(
+class AuthLocalDataSource @Inject constructor(
     private val localStorage: DataStorage
 ) {
 

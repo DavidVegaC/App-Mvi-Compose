@@ -3,8 +3,9 @@ package com.davega.products.domain.product.use_cases.update_products
 import com.davega.domain.shared.base.SimpleUseCase
 import com.davega.domain.shared.utils.DataResult
 import com.davega.products.domain.product.repository.ProductRepository
+import javax.inject.Inject
 
-class UpdateProductsUseCase(
+class UpdateProductsUseCase @Inject constructor(
     private val productRepository: ProductRepository
 ): SimpleUseCase.OnlyResult<UpdateProductsResult> {
 

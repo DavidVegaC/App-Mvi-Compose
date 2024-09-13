@@ -22,15 +22,4 @@ object DataModule {
     @Provides
     fun provideDataStorage(@ApplicationContext appContext: Context): DataStorage = DataStorageImpl(appContext)
 
-    @Singleton
-    @Provides
-    fun provideLocalDataSource(localStorage: DataStorage): AuthLocalDataSource = AuthLocalDataSource(localStorage)
-
-    @Singleton
-    @Provides
-    fun provideAuthInterceptor(localDataSource: AuthLocalDataSource): Interceptor = AuthInterceptor(localDataSource)
-
-    @Singleton
-    @Provides
-    fun provideSessionTimer(localDataSource: AuthLocalDataSource): SessionTimer = SessionTimer(localDataSource)
 }

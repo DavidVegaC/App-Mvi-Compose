@@ -4,8 +4,9 @@ import com.davega.auth.domain.auth.repository.AuthRepository
 import com.davega.data.auth.utils.SessionTimer
 import com.davega.domain.shared.base.SimpleUseCase
 import com.davega.domain.shared.utils.DataResult
+import javax.inject.Inject
 
-class LoginUseCase(
+class LoginUseCase @Inject constructor(
     private val authRepository: AuthRepository,
     private val sessionTimer: SessionTimer
 ): SimpleUseCase.ParamsAndResult<LoginParameters, LoginResult> {

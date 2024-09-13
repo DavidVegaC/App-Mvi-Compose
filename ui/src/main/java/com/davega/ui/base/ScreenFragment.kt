@@ -11,6 +11,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.fragment.app.createViewModelLazy
 import androidx.lifecycle.ViewModel
 import androidx.navigation.fragment.findNavController
 import com.davega.ui.lifecycle.LoadingEvent
@@ -19,8 +20,9 @@ import com.davega.ui.utils.hideLoading
 import com.davega.ui.utils.showLoading
 import kotlin.reflect.KClass
 
+
 abstract class ScreenFragment<V : ViewModel>(
-    private val clazz: KClass<V>,
+    clazz: KClass<V>,
     private val navGraphId: Int? = null,
     fullScreen: Boolean = false,
     animation: Int? = null,
@@ -31,20 +33,13 @@ abstract class ScreenFragment<V : ViewModel>(
     isCancelable = isCancelable
 ) {
 
-    lateinit var viewModel: V
-
-    /*protected val viewModel: V by lazy {
+    val viewModel: V by createViewModelLazy(viewModelClass = clazz, storeProducer = {
         if (navGraphId != null) {
-            findNavController().getViewModelStoreOwner(navGraphId)
-                .getViewModel(clazz = clazz, parameters = ::getParameters)
+            findNavController().getViewModelStoreOwner(navGraphId).viewModelStore
         } else {
-            getViewModel(clazz = clazz, parameters = ::getParameters)
+            viewModelStore
         }
-    }
-
-    open fun getParameters(): ParametersHolder {
-        return parametersOf()
-    }*/
+    })
 
     override fun onCreateView(
         inflater: LayoutInflater,

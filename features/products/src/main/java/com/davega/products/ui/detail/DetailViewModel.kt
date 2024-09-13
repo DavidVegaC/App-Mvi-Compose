@@ -1,8 +1,9 @@
 package com.davega.products.ui.detail
 
+import androidx.lifecycle.SavedStateHandle
 import com.davega.products.domain.movement.use_cases.get_movements.GetMovementsResult
 import com.davega.products.domain.movement.use_cases.get_movements.GetMovementsUseCase
-import com.davega.products.domain.product.entities.Product
+import com.davega.products.ui.navigation.main.Screen
 import com.davega.ui.lifecycle.StatefulViewModel
 import com.davega.ui.utils.launch
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -10,12 +11,14 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    product: Product,
+    savedStateHandle: SavedStateHandle,
     private val getMovementsUseCase: GetMovementsUseCase
 ): StatefulViewModel<DetailUiState, DetailUiEvent>(
-    state = DetailUiState(
-        product = product
-    )
+    state = run {
+        DetailUiState(
+            product = Screen.ProductDetail.getProduct(savedStateHandle)
+        )
+    }
 ){
 
     override suspend fun onInit() {

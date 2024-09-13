@@ -8,8 +8,9 @@ import com.davega.domain.auth.entities.CiphertextWrapper
 import com.davega.domain.auth.entities.Auth
 import com.davega.auth.domain.auth.repository.AuthRepository
 import com.davega.domain.shared.utils.DataResult
+import javax.inject.Inject
 
-class AuthRepositoryImpl(
+class AuthRepositoryImpl @Inject constructor(
     private val remote: AuthRemoteDataSource,
     private val local: AuthLocalDataSource
 ): AuthRepository {

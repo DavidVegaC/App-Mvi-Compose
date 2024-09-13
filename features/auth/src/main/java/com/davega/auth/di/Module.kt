@@ -1,6 +1,8 @@
 package com.davega.auth.di
 
 import com.davega.auth.data.auth.remote.api.AuthApi
+import com.davega.auth.data.auth.repository.AuthRepositoryImpl
+import com.davega.auth.domain.auth.repository.AuthRepository
 import com.davega.data.BuildConfig
 import com.davega.data.shared.interceptors.PostmanInterceptor
 import com.davega.data.shared.utils.ApiBuilder
@@ -18,4 +20,7 @@ object AuthModel {
     @Singleton
     @Provides
     fun provideAppRestApi(): AuthApi = ApiBuilder(BuildConfig.BASE_URL).addInterceptor(PostmanInterceptor()).build<AuthApi>()
+
+    @Provides
+    fun provideAuthRepository(repository: AuthRepositoryImpl): AuthRepository = repository
 }

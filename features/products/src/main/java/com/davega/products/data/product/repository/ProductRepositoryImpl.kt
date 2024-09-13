@@ -5,8 +5,9 @@ import com.davega.products.data.product.remote.data_source.ProductRemoteDataSour
 import com.davega.products.data.product.repository.mappers.toProduct
 import com.davega.products.domain.product.entities.Product
 import com.davega.products.domain.product.repository.ProductRepository
+import javax.inject.Inject
 
-class ProductRepositoryImpl(
+class ProductRepositoryImpl @Inject constructor(
     private val remote: ProductRemoteDataSource
 ): ProductRepository {
 

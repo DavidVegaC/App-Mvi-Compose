@@ -9,20 +9,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 import com.davega.products.R
-import com.davega.products.ui.navigation.main.MainRoutes
+import com.davega.products.ui.navigation.main.Screen
 import com.davega.products.ui.products.mappers.UiMapper
 import com.davega.ui.components.AppLoading
 import com.davega.ui.components.AppRetry
-import org.koin.androidx.compose.getViewModel
 
 @Composable
 fun ProductsScreen(
     navController: NavController,
-    viewModel: ProductsViewModel = getViewModel()
+    viewModel: ProductsViewModel = hiltViewModel()
 ) = with(viewModel) {
     if(uiState.products.isLoading && uiState.products.value.isEmpty()){
         Box(
@@ -64,9 +64,7 @@ fun ProductsScreen(
                         top = 32.dp
                     )
                 ) {
-                    val route = MainRoutes.Detail.createRoute(
-                        product = product
-                    )
+                    val route = Screen.ProductDetail.createRoute(product)
                     navController.navigate(route)
                 }
             }

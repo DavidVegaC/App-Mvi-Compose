@@ -14,12 +14,20 @@ import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.DialogFragment
 import com.davega.ui.R
 import com.davega.ui.theme.ArchitectureAndroidTheme
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
+abstract class CoreFragment(
+
+): DialogFragment() {
+
+}
 
 abstract class BaseFragment(
     private val fullScreen: Boolean = false,
     private val animation: Int? = null,
     isCancelable: Boolean = true
-): DialogFragment() {
+): CoreFragment() {
 
     init {
         this.isCancelable = isCancelable

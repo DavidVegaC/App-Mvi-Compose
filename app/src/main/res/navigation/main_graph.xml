@@ -4,19 +4,10 @@
     android:id="@+id/main_graph"
     app:startDestination="@id/auth_graph">
 
-    <include-dynamic
-        android:id="@+id/auth_graph"
-        android:label="@string/title_auth"
-        app:graphPackage="com.davega.ibkapp.auth"
-        app:graphResName="auth_graph"
-        app:moduleName="auth" />
+    <include
+        app:graph="@navigation/auth_graph" />
 
-    <include-dynamic
-        android:id="@+id/products_graph"
-        android:label="@string/title_products"
-        app:graphPackage="com.davega.ibkapp.products"
-        app:graphResName="products_graph"
-        app:moduleName="products" />
-
+    <include
+        app:graph="@navigation/products_graph" />
 
 </navigation>

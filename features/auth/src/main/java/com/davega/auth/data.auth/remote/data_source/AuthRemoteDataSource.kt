@@ -5,8 +5,9 @@ import com.davega.auth.data.auth.remote.dto.request.AuthRequest
 import com.davega.auth.data.auth.remote.dto.response.AuthResponse
 import com.davega.data.shared.utils.safeApiCall
 import com.davega.domain.shared.utils.DataResult
+import javax.inject.Inject
 
-class AuthRemoteDataSource(
+class AuthRemoteDataSource @Inject constructor(
     private val api: AuthApi
 ) {
 

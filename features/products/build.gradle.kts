@@ -1,7 +1,7 @@
 import utils.addRetrofitDependencies
 
 plugins {
-    alias(libs.plugins.androidDynamicFeature)
+    alias(libs.plugins.androidLibrary)
     alias(libs.plugins.jetbrainsKotlinAndroid)
     alias(libs.plugins.navigationSafeargsKotlin)
     alias(libs.plugins.comGoogleDevtoolsKsp)
@@ -41,10 +41,10 @@ android {
 }
 
 dependencies {
-    implementation(project(":app"))
     implementation(project(":domain"))
     implementation(project(":data"))
     implementation(project(":ui"))
+    implementation(project(":navigation"))
 
     // hilt
     implementation(libs.hilt.android)
@@ -62,7 +62,6 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation)
     implementation(libs.androidx.icons)
-    implementation(libs.koin.compose)
 
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)

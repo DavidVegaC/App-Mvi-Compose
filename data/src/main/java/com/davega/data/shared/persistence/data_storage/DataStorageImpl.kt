@@ -5,7 +5,7 @@ import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 
-class DataStorageImpl(context: Context) : DataStorage {
+class DataStorageImpl (context: Context) : DataStorage {
 
     private lateinit var sharedPreferences: SharedPreferences
 
@@ -26,7 +26,7 @@ class DataStorageImpl(context: Context) : DataStorage {
     }
 
     companion object {
-        private const val FILE_NAME = "app_sp"
+        private const val FILE_NAME = "app_ibk"
     }
 
     init {

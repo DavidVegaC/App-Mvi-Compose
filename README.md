@@ -70,7 +70,7 @@ La aplicación se basa en las siguientes librerías:
 
 - [**Coroutines:**](https://github.com/Kotlin/kotlinx.coroutines)  Una corrutina es un patrón de diseño de concurrencia que se puede utilizar en Android para simplificar el código que se ejecuta de forma asíncrona.
 
-- **[Koin:](https://insert-koin.io/docs/quickstart/android/)** Librería de inyección de dependencias que reduce el trabajo manual de inserción de dependencias.
+- **[Dagger-Hilt:](https://developer.android.com/training/dependency-injection/hilt-android)** Librería de inyección de dependencias que reduce el trabajo manual de inserción de dependencias.
 
 - **[Coil:](https://coil-kt.github.io/coil/)** Potente librería para la carga eficiente de imágenes, con almacenamiento en caché para mejorar la velocidad de carga.
 

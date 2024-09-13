@@ -41,7 +41,6 @@ import com.davega.ui.components.AppTextField
 import com.davega.ui.utils.navigate
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class LoginScreen: ScreenFragment<LoginViewModel>(
     clazz = LoginViewModel::class
 ) {
@@ -136,7 +135,7 @@ class LoginScreen: ScreenFragment<LoginViewModel>(
                 Text(
                     text = buildAnnotatedString {
                         append(
-                            stringResource(id = com.davega.ibkapp.R.string.app_name)
+                            "Interbank"
                         )
                         addStyle(
                             style = SpanStyle(

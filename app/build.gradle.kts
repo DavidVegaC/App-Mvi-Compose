@@ -42,10 +42,13 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
     }
-    dynamicFeatures += setOf(":features:auth", ":features:products")
 }
 
 dependencies {
+    implementation(project(":navigation"))
+    implementation(project(":features:auth"))
+    implementation(project(":features:products"))
+
     // hilt
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
